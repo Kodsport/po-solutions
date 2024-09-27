@@ -25,16 +25,21 @@ int main() {
 
   sort(lamps.begin(), lamps.end());
 
-  ll acc = 0;
+  ll total = 0;
   ll count = 0;
   for (ll i = 0; i < n; i++) {
-    acc += x * lamps[i];
-    count += 1;
-
-    if (y < (acc + count - 1) / count) {
-      count -= 1;
+    ll new_total = total + x * lamps[i];
+    // Nedan vill vi i vänsterledet beräkna ceil(new_total / (count + 1)), men
+    // vi vill helst inte behöva jobba med icke-heltal. Därför gör vi ett litet
+    // smart knep. I täljaren (new_total) adderar vi nämnaren - 1 (alltså
+    // count + 1 - 1 = count). Divisionen av heltal (/) avrundar nedåt.
+    // Tillsammans ger det vårt eftersökta värde utan att någonsin använda oss
+    // av icke-heltal
+    if ((new_total + count) / (count + 1) <= y) {
+      total += x * lamps[i];
+      count += 1;
+    } else
       break;
-    }
   }
 
   cout << count;
