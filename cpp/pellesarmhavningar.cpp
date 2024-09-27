@@ -18,6 +18,7 @@ int main() {
     cin >> n;
 
     ll res = 0; // Notera att om n är stort så kan Pelle göra så många armhävningar så att det inte får plats i ett 32 bitars heltal.
+    // Detta är för att svaret kan vara så stort som N^2. 32-bitars heltal hanterar tal upp till ~2*10^9, och (10^6)^2=10^12 > 2 * 10^9
     repp(i, 1, n+1) {
         res += i;
     }
