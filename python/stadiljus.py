@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 n, x, y = map(int, [input() for _ in range(3)])
 
 lamps = list(map(int, input().split()))

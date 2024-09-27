@@ -1,19 +1,29 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 typedef long long ll;
 
+#define rep(i, high) for (int i = 0; i < high; i++)
+#define repp(i, low, high) for (int i = low; i < high; i++)
+#define sz(container) ((int)container.size())
+#define all(x) begin(x), end(x)
+
+void fast() {
+  ios::sync_with_stdio(0);
+  cin.tie(0);
+}
+
 int main() {
-  ios_base::sync_with_stdio(false);
-  cin.tie(NULL);
+  fast();
 
   ll n, x, y;
   cin >> n >> x >> y;
 
-  ll lamps[n];
+  vector<ll> lamps(n);
   for (ll i = 0; i < n; i++)
     cin >> lamps[i];
 
-  sort(lamps, lamps + sizeof(lamps) / sizeof(lamps[0]));
+  sort(lamps.begin(), lamps.end());
 
   ll acc = 0;
   ll count = 0;
