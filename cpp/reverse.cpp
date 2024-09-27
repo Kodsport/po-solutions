@@ -25,7 +25,9 @@ int main() {
         cin >> lines[i];
     }
 
-    per(i, n) {
+    reverse(all(lines));
+
+    rep(i, n) {
         cout << lines[i] << '\n';
     }
 

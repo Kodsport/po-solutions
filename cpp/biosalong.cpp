@@ -5,7 +5,6 @@ typedef long long ll;
 
 #define rep(i, high) for (int i = 0; i < high; i++)
 #define repp(i, low, high) for (int i = low; i < high; i++)
-#define repe(i, container) for (auto& i : container)
 #define sz(container) ((int)container.size())
 #define all(x) begin(x),end(x)
 
