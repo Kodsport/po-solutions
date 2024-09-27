@@ -25,6 +25,8 @@ int main() {
         cin >> lines[i];
     }
 
+    // vanligtvis skriver man reverse(lines.begin, lines.end())
+    // men tack vare makrot "all" på rad 11 kan vi förenkla det till:
     reverse(all(lines));
 
     rep(i, n) {
