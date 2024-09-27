@@ -11,7 +11,7 @@ typedef long long ll;
 void fast() { ios::sync_with_stdio(0); cin.tie(0); }
 
 
-signed main()
+int main()
 {
     fast();
 
