@@ -38,8 +38,9 @@ int main() {
     if ((new_total + count) / (count + 1) <= y) {
       total += x * lamps[i];
       count += 1;
-    } else
+    } else {
       break;
+    }
   }
 
   cout << count;

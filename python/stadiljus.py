@@ -10,7 +10,7 @@ for i in range(n):
     # vi vill helst inte behöva jobba med icke-heltal. Därför gör vi ett litet
     # smart knep. I täljaren (new_total) adderar vi nämnaren - 1 (alltså
     # count + 1 - 1 = count). Divisionen av heltal (//) avrundar nedåt.
-    # Tillsammans ger det vårt eftersökta värde utan att någonsin anvnända oss
+    # Tillsammans ger det vårt eftersökta värde utan att någonsin använda oss
     # av icke-heltal
     if (new_total + count) // (count + 1) <= y:
         total += x * lamps[i]
