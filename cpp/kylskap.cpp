@@ -25,14 +25,14 @@ int main() {
   // Notera att vi adderar med två, detta då vi vill testa fallet då vi använder
   // endast a_bilar
   for (ll a_cars = 0; a_cars < 2 + n / k_a; a_cars++) {
-    // Vi adderar med nämnaren - 1 i täljaren för att göra avrunda uppåt. Om vi
-    // fyller en halv bil behöver den fortfarande köra
-    ll b_cars = (n - k_a * a_cars + k_b - 1) / k_b;
-    ll cost = a_cars * p_a + b_cars * p_b;
-    if (cost < best_cost) {
-      best_a = a_cars;
-      best_b = b_cars;
-      best_cost = cost;
+    for (ll b_cars = 0; b_cars < 2 + n / k_a; b_cars++) {
+      ll cost = a_cars * p_a + b_cars * p_b;
+      ll count = a_cars * k_a + b_cars * k_b;
+      if (n <= count && cost < best_cost) {
+        best_a = a_cars;
+        best_b = b_cars;
+        best_cost = cost;
+      }
     }
   }
 

@@ -25,10 +25,10 @@ int main() {
   repp(a, 1, n + 1) {
     // Notera att vi börjar från a, vi vill inte dubbelräkna
     repp(b, a, n + 1) {
-      repp(c, 1, n + 1) {
-        if (c * c == a * a + b * b - a * b) {
-          ans++;
-        }
+      double c = sqrt(a * a + b * b - a * b);
+      // ceil(c) == floor(c) testar om talet är ett heltal
+      if (ceil(c) == floor(c) && 1 <= c && c <= n) {
+        ans++;
       }
     }
   }
