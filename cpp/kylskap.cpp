@@ -26,12 +26,14 @@ int main() {
   // endast a_bilar
   for (ll a_cars = 0; a_cars < 2 + n / k_a; a_cars++) {
     for (ll b_cars = 0; b_cars < 2 + n / k_a; b_cars++) {
-      ll cost = a_cars * p_a + b_cars * p_b;
       ll count = a_cars * k_a + b_cars * k_b;
-      if (n <= count && cost < best_cost) {
-        best_a = a_cars;
-        best_b = b_cars;
-        best_cost = cost;
+      if (count >= n) {
+        ll cost = a_cars * p_a + b_cars * p_b;
+        if (cost < best_cost) {
+          best_a = a_cars;
+          best_b = b_cars;
+          best_cost = cost;
+        }
       }
     }
   }
