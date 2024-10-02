@@ -1,8 +1,8 @@
 def rec(keyboard):
     if len(keyboard) == len(keys):
-        prev = stycket[0]
+        prev = notes[0]
         dist = 0
-        for key in stycket:
+        for key in notes:
             dist += abs(keyboard[prev] - keyboard[key])
             prev = key
         return dist
@@ -16,7 +16,7 @@ def rec(keyboard):
 
     return ans
 
-stycket = input()
-keys = set(stycket)
+notes = input()
+keys = set(notes)
 print(rec({}))
 
