@@ -15,45 +15,52 @@ void fast() {
   cin.tie(0);
 }
 
-string stycket;
-set<ll> keys;
-map<char, ll> keyboard;
-
-ll rec() {
-  if (keyboard.size() == keys.size()) {
-    char prev = stycket[0];
-    ll dist = 0;
-    for (char key : stycket) {
-      dist += abs(keyboard[prev] - keyboard[key]);
-      prev = key;
-    }
-    return dist;
-  }
-
-  ll ans = 1e7;
-  for (char key : stycket) {
-    if (0 < keyboard.count(key))
-      continue;
-
-    keyboard.insert({key, keyboard.size()});
-    ans = min(ans, rec());
-    keyboard.erase(key);
-  }
-
-  return ans;
-}
-
 int main() {
   fast();
 
-  // TODO: Why slow?
+  string notes;
+  cin >> notes;
 
-  cin >> stycket;
-  for (char c : stycket) {
-    keys.insert(c);
+  set<ll> all_notes;
+  for (char c : notes) {
+    all_notes.insert(c);
   }
 
-  cout << rec() << endl;
+  ll n = sz(all_notes);
+
+  map<char, ll> mapping;
+  for (char c : all_notes) {
+    mapping[c] = mapping.size();
+  }
+
+  vector<ll> permutation(n);
+  for (ll i = 0; i < n; i++) {
+    permutation[i] = i;
+  }
+
+  vector<vector<ll>> cost_matrix(n, vector<ll>(n));
+  for (ll i = 0; i < sz(notes) - 1; i++) {
+    ll a = mapping[notes[i]];
+    ll b = mapping[notes[i + 1]];
+    cost_matrix[a][b] += 1;
+    cost_matrix[b][a] += 1;
+  }
+
+  // Den här loopen går igenom alla möjliga permutationer (ordningar) av talen 0
+  // till n - 1
+  ll ans = 1e7;
+  do {
+    ll cost = 0;
+    for (ll i = 0; i < n; i++) {
+      for (ll j = i; j < n; j++) {
+        cost += cost_matrix[permutation[i]][permutation[j]] * abs(i - j);
+      }
+    }
+
+    ans = min(ans, cost);
+  } while (next_permutation(all(permutation)));
+
+  cout << ans << endl;
 
   return 0;
 }
