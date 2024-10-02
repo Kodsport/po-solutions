@@ -12,4 +12,4 @@ sums = [0 for _ in range(n * m + 1)]
 distributation(0, 0)
 sums.sort(reverse=True)
 
-print(sum(sums[:k]) / sum(sums))
+print(sum(sums[:k]) / (m ** n))
