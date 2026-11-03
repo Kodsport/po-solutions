@@ -1,19 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
+using ll = long long;
+using vl = vector<ll>;
 
-#define rep(i, high) for (int i = 0; i < high; i++)
-#define repp(i, low, high) for (int i = low; i < high; i++)
-#define per(i, high) for (int i = high - 1; i >= 0; i--)
-#define perr(i, high, low) for (int i = high - 1, i >= low; i++)
-#define sz(container) ((int)container.size())
+#define rep(i, a, b) for (ll i = (a); i < (b); i++)
+#define sz(x) ((ll)(x).size())
 #define all(x) begin(x), end(x)
-
-void fast() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-}
 
 vector<string> plates;
 ll n, m;
@@ -24,9 +17,9 @@ ll count(ll plate_nr, string mask) {
   }
 
   ll total_count = 0;
-  for (ll offset = 0; offset < m; offset++) {
+  rep(offset, 0, m) {
     string new_mask;
-    for (ll i = 0; i < m; i++) {
+    rep(i, 0, m) {
       if (mask[i] == '.' && plates[plate_nr][(i + offset) % m] == '.') {
         new_mask.push_back('.');
       } else {
@@ -40,16 +33,14 @@ ll count(ll plate_nr, string mask) {
 }
 
 int main() {
-  fast();
+  cin.tie(0)->sync_with_stdio(0);
 
   cin >> n >> m;
 
   plates.resize(n);
-  for (ll i = 0; i < n; i++) {
+  rep(i, 0, n) {
     cin >> plates[i];
   }
 
   cout << count(0, string(m, '.')) << endl;
-
-  return 0;
 }

@@ -1,33 +1,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
+using ll = long long;
+using vl = vector<ll>;
 
-#define rep(i, high) for (int i = 0; i < high; i++)
-#define repp(i, low, high) for (int i = low; i < high; i++)
-#define sz(container) ((int)container.size())
+#define rep(i, a, b) for (ll i = (a); i < (b); i++)
+#define sz(x) ((ll)(x).size())
 #define all(x) begin(x), end(x)
 
-void fast() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-}
-
 int main() {
-  fast();
+  cin.tie(0)->sync_with_stdio(0);
 
   ll n, x, y;
   cin >> n >> x >> y;
 
   vector<ll> lamps(n);
-  for (ll i = 0; i < n; i++)
+  rep(i, 0, n)
     cin >> lamps[i];
 
   sort(lamps.begin(), lamps.end());
 
   ll total = 0;
   ll count = 0;
-  for (ll i = 0; i < n; i++) {
+  rep(i, 0, n) {
     ll new_total = total + x * lamps[i];
     // Nedan vill vi i vänsterledet beräkna ceil(new_total / (count + 1)), men
     // vi vill helst inte behöva jobba med icke-heltal. Därför gör vi ett litet
@@ -44,6 +39,4 @@ int main() {
   }
 
   cout << count;
-
-  return 0;
 }

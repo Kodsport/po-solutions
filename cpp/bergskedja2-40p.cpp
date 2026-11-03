@@ -1,19 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
+using ll = long long;
+using vl = vector<ll>;
 
-#define rep(i, high) for (int i = 0; i < high; i++)
-#define repp(i, low, high) for (int i = low; i < high; i++)
-#define per(i, high) for (int i = high - 1; i >= 0; i--)
-#define perr(i, high, low) for (int i = high - 1, i >= low; i++)
-#define sz(container) ((int)container.size())
+#define rep(i, a, b) for (ll i = (a); i < (b); i++)
+#define sz(x) ((ll)(x).size())
 #define all(x) begin(x), end(x)
-
-void fast() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-}
 
 vector<vector<ll>> grid, neighbours;
 ll n, m;
@@ -27,8 +20,8 @@ void rec(ll r, ll c, set<ll> used) {
 
   if (r == m) {
     bool allowed = true;
-    for (ll a = 0; a < n; a++) {
-      for (ll b = 0; b < m; b++) {
+    rep(a, 0, n) {
+      rep(b, 0, m) {
         ll smaller = 0;
         if (a != 0 && grid[a - 1][b] < grid[a][b])
           smaller += 1;
@@ -54,7 +47,7 @@ void rec(ll r, ll c, set<ll> used) {
     return;
   }
 
-  for (ll i = 1; i < n * m + 1; i++) {
+  rep(i, 1, n * m + 1) {
     if (0 < used.count(i))
       continue;
     grid[c][r] = i;
@@ -65,22 +58,20 @@ void rec(ll r, ll c, set<ll> used) {
 }
 
 int main() {
-  fast();
+  cin.tie(0)->sync_with_stdio(0);
 
   cin >> n >> m;
 
   neighbours.resize(n, vector<ll>(m));
   grid.resize(n, vector<ll>(m));
-  for (ll i = 0; i < n; i++) {
+  rep(i, 0, n) {
     string line;
     cin >> line;
-    for (ll j = 0; j < m; j++) {
+    rep(j, 0, m) {
       neighbours[i][j] = line[j] - '0';
     }
   }
 
   rec(0, 0, {});
   cout << mi << " " << ma << endl;
-
-  return 0;
 }

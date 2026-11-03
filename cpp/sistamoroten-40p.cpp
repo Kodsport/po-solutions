@@ -1,17 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
+using ll = long long;
+using vl = vector<ll>;
 
-#define rep(i, high) for (int i = 0; i < high; i++)
-#define repp(i, low, high) for (int i = low; i < high; i++)
-#define sz(container) ((int)container.size())
+#define rep(i, a, b) for (ll i = (a); i < (b); i++)
+#define sz(x) ((ll)(x).size())
 #define all(x) begin(x), end(x)
-
-void fast() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-}
 
 ll n, m, k;
 vector<ll> sums;
@@ -22,13 +17,13 @@ void distribution(ll i, ll sum) {
     return;
   }
 
-  for (ll j = 1; j < m + 1; j++) {
+  rep(j, 1, m + 1) {
     distribution(i + 1, sum + j);
   }
 }
 
 int main() {
-  fast();
+  cin.tie(0)->sync_with_stdio(0);
 
   cin >> n >> m >> k;
   sums.resize(n * m + 1);
@@ -36,11 +31,9 @@ int main() {
   sort(sums.rbegin(), sums.rend());
 
   double k_sum = 0;
-  for (ll i = 0; i < k; i++) {
+  rep(i, 0, k) {
     k_sum += sums[i];
   }
 
   cout << k_sum / pow(m, n) << endl;
-
-  return 0;
 }

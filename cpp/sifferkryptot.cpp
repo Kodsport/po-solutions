@@ -1,22 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
+using ll = long long;
+using vl = vector<ll>;
 
-#define rep(i, high) for (int i = 0; i < high; i++)
-#define repp(i, low, high) for (int i = low; i < high; i++)
-#define sz(container) ((int)container.size())
+#define rep(i, a, b) for (ll i = (a); i < (b); i++)
+#define sz(x) ((ll)(x).size())
 #define all(x) begin(x), end(x)
-
-void fast() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-}
 
 string crypto;
 
 ll combinations(ll i) {
-  if (i == crypto.size()) {
+  if (i == sz(crypto)) {
     return 1;
   }
   if (crypto[i] == '0') {
@@ -24,7 +19,7 @@ ll combinations(ll i) {
   }
 
   ll ans = combinations(i + 1);
-  if (i + 1 < crypto.size() && (crypto[i] == '1' || crypto[i] == '2')) {
+  if (i + 1 < sz(crypto) && (crypto[i] == '1' || crypto[i] == '2')) {
     ans += combinations(i + 2);
   }
 
@@ -32,10 +27,8 @@ ll combinations(ll i) {
 }
 
 int main() {
-  fast();
+  cin.tie(0)->sync_with_stdio(0);
 
   cin >> crypto;
   cout << combinations(0) << endl;
-
-  return 0;
 }

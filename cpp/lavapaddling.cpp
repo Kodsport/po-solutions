@@ -1,26 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
+using ll = long long;
+using vl = vector<ll>;
 
-#define rep(i, high) for (int i = 0; i < high; i++)
-#define repp(i, low, high) for (int i = low; i < high; i++)
-#define sz(container) ((int)container.size())
+#define rep(i, a, b) for (ll i = (a); i < (b); i++)
+#define sz(x) ((ll)(x).size())
 #define all(x) begin(x), end(x)
 
-void fast() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-}
-
 int main() {
-  fast();
+  cin.tie(0)->sync_with_stdio(0);
 
   ll n, k, h;
   cin >> n >> k >> h;
 
   vector<ll> dist_m(n);
-  for (ll i = 0; i < n; i++)
+  rep(i, 0, n)
     cin >> dist_m[i];
 
   ll p = 0;
@@ -32,6 +27,4 @@ int main() {
   }
 
   cout << p << endl;
-
-  return 0;
 }

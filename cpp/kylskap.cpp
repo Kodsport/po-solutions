@@ -1,22 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
+using ll = long long;
+using vl = vector<ll>;
 
-#define rep(i, high) for (int i = 0; i < high; i++)
-#define repp(i, low, high) for (int i = low; i < high; i++)
-#define per(i, high) for (int i = high - 1; i >= 0; i--)
-#define perr(i, high, low) for (int i = high - 1, i >= low; i++)
-#define sz(container) ((int)container.size())
+#define rep(i, a, b) for (ll i = (a); i < (b); i++)
+#define sz(x) ((ll)(x).size())
 #define all(x) begin(x), end(x)
 
-void fast() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-}
-
 int main() {
-  fast();
+  cin.tie(0)->sync_with_stdio(0);
 
   ll p_a, k_a, p_b, k_b, n;
   cin >> p_a >> k_a >> p_b >> k_b >> n;
@@ -24,8 +17,8 @@ int main() {
   ll best_a = -1, best_b = -1, best_cost = 3e5;
   // Notera att vi adderar med två, detta då vi vill testa fallet då vi använder
   // endast a_bilar
-  for (ll a_cars = 0; a_cars < 2 + n / k_a; a_cars++) {
-    for (ll b_cars = 0; b_cars < 2 + n / k_a; b_cars++) {
+  rep(a_cars, 0, 2 + n / k_a) {
+    rep(b_cars, 0, 2 + n / k_b) {
       ll count = a_cars * k_a + b_cars * k_b;
       if (count >= n) {
         ll cost = a_cars * p_a + b_cars * p_b;
@@ -39,6 +32,4 @@ int main() {
   }
 
   cout << best_a << " " << best_b << " " << best_cost << endl;
-
-  return 0;
 }

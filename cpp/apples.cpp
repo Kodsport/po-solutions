@@ -1,19 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
+using ll = long long;
+using vl = vector<ll>;
 
-#define rep(i, high) for (int i = 0; i < high; i++)
-#define repp(i, low, high) for (int i = low; i < high; i++)
-#define per(i, high) for (int i = high - 1; i >= 0; i--)
-#define perr(i, high, low) for (int i = high - 1, i >= low; i++)
-#define sz(container) ((int)container.size())
+#define rep(i, a, b) for (ll i = (a); i < (b); i++)
+#define sz(x) ((ll)(x).size())
 #define all(x) begin(x), end(x)
-
-void fast() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-}
 
 vector<vector<ll>> grid;
 ll n, k;
@@ -40,19 +33,17 @@ ll count(ll r, ll c, ll visited_row, ll visited_count) {
 }
 
 int main() {
-  fast();
+  cin.tie(0)->sync_with_stdio(0);
 
   cin >> n >> k;
 
   grid.resize(2, vector<ll>(n));
-  for (ll i = 0; i < n; i++) {
+  rep(i, 0, n) {
     cin >> grid[0][i];
   }
-  for (ll i = 0; i < n; i++) {
+  rep(i, 0, n) {
     cin >> grid[1][i];
   }
 
   cout << count(1, 0, 0, 0) << endl;
-
-  return 0;
 }

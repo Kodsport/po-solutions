@@ -1,22 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
+using ll = long long;
+using vl = vector<ll>;
 
-#define rep(i, high) for (int i = 0; i < high; i++)
-#define repp(i, low, high) for (int i = low; i < high; i++)
-#define per(i, high) for (int i = high - 1; i >= 0; i--)
-#define perr(i, high, low) for (int i = high - 1, i >= low; i++)
-#define sz(container) ((int)container.size())
+#define rep(i, a, b) for (ll i = (a); i < (b); i++)
+#define sz(x) ((ll)(x).size())
 #define all(x) begin(x), end(x)
 
-void fast() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-}
-
 int main() {
-  fast();
+  cin.tie(0)->sync_with_stdio(0);
 
   string notes;
   cin >> notes;
@@ -34,12 +27,12 @@ int main() {
   }
 
   vector<ll> permutation(n);
-  for (ll i = 0; i < n; i++) {
+  rep(i, 0, n) {
     permutation[i] = i;
   }
 
   vector<vector<ll>> cost_matrix(n, vector<ll>(n));
-  for (ll i = 0; i < sz(notes) - 1; i++) {
+  rep(i, 0, sz(notes) - 1) {
     ll a = mapping[notes[i]];
     ll b = mapping[notes[i + 1]];
     cost_matrix[a][b] += 1;
@@ -51,8 +44,8 @@ int main() {
   ll ans = 1e7;
   do {
     ll cost = 0;
-    for (ll i = 0; i < n; i++) {
-      for (ll j = i; j < n; j++) {
+    rep(i, 0, n) {
+      rep(j, i, n) {
         cost += cost_matrix[permutation[i]][permutation[j]] * abs(i - j);
       }
     }
@@ -61,6 +54,4 @@ int main() {
   } while (next_permutation(all(permutation)));
 
   cout << ans << endl;
-
-  return 0;
 }

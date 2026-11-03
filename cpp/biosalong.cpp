@@ -1,27 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
+using ll = long long;
+using vl = vector<ll>;
 
-#define rep(i, high) for (int i = 0; i < high; i++)
-#define repp(i, low, high) for (int i = low; i < high; i++)
-#define sz(container) ((int)container.size())
-#define all(x) begin(x),end(x)
+#define rep(i, a, b) for (ll i = (a); i < (b); i++)
+#define sz(x) ((ll)(x).size())
+#define all(x) begin(x), end(x)
 
-void fast() { ios::sync_with_stdio(0); cin.tie(0); }
-
-
-signed main()
+int main()
 {
-    fast();
+    cin.tie(0)->sync_with_stdio(0);
 
-    int n;
+    ll n;
     cin >> n;
     string seats;
     cin >> seats;
-    int ans = int(1e9);
-    int latest_seat = -int(1e9);
-    rep(i, n)
+    ll ans = (ll)1e9;
+    ll latest_seat = -(ll)1e9;
+    rep(i, 0, n)
     {
         if (seats[i] == '.')
         {
@@ -30,6 +27,4 @@ signed main()
         }
     }
     cout << ans;
-
-    return 0;
 }

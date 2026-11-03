@@ -1,17 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef long long ll;
+using ll = long long;
+using vl = vector<ll>;
 
-#define rep(i, high) for (int i = 0; i < high; i++)
-#define repp(i, low, high) for (int i = low; i < high; i++)
-#define sz(container) ((int)container.size())
+#define rep(i, a, b) for (ll i = (a); i < (b); i++)
+#define sz(x) ((ll)(x).size())
 #define all(x) begin(x), end(x)
-
-void fast() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
-}
 
 ll n, t;
 ll best_time = 1e7;
@@ -38,17 +33,15 @@ void rec(ll pickles, ll pps, ll time) {
 }
 
 int main() {
-  fast();
+  cin.tie(0)->sync_with_stdio(0);
 
   cin >> n >> t;
 
   buildings.resize(n);
-  for (ll i = 0; i < n; i++) {
+  rep(i, 0, n) {
     cin >> buildings[i].first >> buildings[i].second;
   }
 
   rec(0, buildings[0].first, 0);
   cout << best_time << endl;
-
-  return 0;
 }
